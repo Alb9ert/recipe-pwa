@@ -1,27 +1,8 @@
-import api from "../../config/api";
-import { Button } from "../shadcn/button";
-import { useUser, useAuth } from "../../context/AuthContext";
-
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const user = useUser();
-
-  const navigate = useNavigate();
-  const { setUser } = useAuth();
-
-  const logoutMutation = useMutation({
-    mutationFn: async () => {
-      await api.post("/logout");
-    },
-    onSuccess: () => {
-      setUser(null);
-      navigate("/login");
-    },
-  });
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -50,18 +31,7 @@ const Navbar = () => {
         </div>
       </div>
       {/* Desktop Login Button */}
-      <div className="hidden md:flex flex-1 justify-end items-center h-full">
-        {!user && (
-          <Link to="/login">
-            <Button>Login</Button>
-          </Link>
-        )}
-        {user && (
-          <Button variant="secondary" onClick={() => logoutMutation.mutate()} disabled={logoutMutation.isPending}>
-            {logoutMutation.isPending ? "Logging out..." : `Logout ${user.name}`}
-          </Button>
-        )}
-      </div>
+      <div className="hidden md:flex flex-1 justify-end items-center h-full" />
       {/* Mobile Menu Button */}
       <div className="md:hidden flex items-center">
         <button onClick={toggleMenu} className="text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900">
@@ -99,24 +69,6 @@ const Navbar = () => {
             >
               Services
             </Link>
-            {!user && (
-              <Link to="/login" onClick={() => setIsMenuOpen(false)}>
-                <Button className="w-full mt-2">Login</Button>
-              </Link>
-            )}
-            {user && (
-              <Button
-                className="w-full mt-2"
-                variant="secondary"
-                onClick={() => {
-                  logoutMutation.mutate();
-                  setIsMenuOpen(false);
-                }}
-                disabled={logoutMutation.isPending}
-              >
-                {logoutMutation.isPending ? "Logging out..." : `Logout ${user.name}`}
-              </Button>
-            )}
           </div>
         </div>
       )}
