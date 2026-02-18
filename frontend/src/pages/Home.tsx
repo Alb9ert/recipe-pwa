@@ -12,9 +12,9 @@ const Home = () => {
   const filteredRecipes = recipes.filter((r) => r.title.toLowerCase().includes(search.toLowerCase()));
 
   return (
-    <div className="flex justify-center flex-col px-10">
-      <h1 className="text-2xl font-semibold mb-2 px-4 pt-6">Opskrifter</h1>
-      <p className="text-gray-600 px-4 mb-4">Her kommer listen over alle jeres opskrifter.</p>
+    <div className="flex justify-center flex-col">
+      <h1 className="text-2xl font-semibold mb-2 pt-6">Opskrifter</h1>
+      <p className="text-gray-600 mb-4">Her kommer listen over alle jeres opskrifter.</p>
 
       <div className="flex justify-center">
         <div className="w-full max-w-[560px] flex items-center">
