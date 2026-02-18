@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const test = https://recipe-pwa-i79y.onrender.com/api;
+const test = "https://recipe-pwa-i79y.onrender.com/api";
 const api = axios.create({
   baseURL: test,
   withCredentials: true,
