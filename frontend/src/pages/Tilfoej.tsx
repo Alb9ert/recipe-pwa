@@ -191,7 +191,7 @@ const Tilfoej = () => {
         <fieldset className="space-y-3">
           <legend className="font-medium">Ingredienser</legend>
           <datalist id="known-ingredients">
-            {knownIngredients.map((ki) => (
+            {(Array.isArray(knownIngredients) ? knownIngredients : []).map((ki) => (
               <option key={ki._id ?? ki.name} value={ki.name} />
             ))}
           </datalist>

@@ -8,10 +8,11 @@ import { cn } from "../lib/utils";
 const Indkoeb = () => {
   const { items, remove, clear } = useShoppingList();
   const { recipes } = useRecipes();
+  const safeRecipes = Array.isArray(recipes) ? recipes : [];
   const [checkedIngredients, setCheckedIngredients] = useState<Set<string>>(new Set());
 
   // Get recipes that are in the shopping list
-  const addedRecipes = recipes.filter((recipe) => items.includes(recipe._id || ""));
+  const addedRecipes = safeRecipes.filter((recipe) => items.includes(recipe._id || ""));
 
   // Aggregate all ingredients from added recipes
   const allIngredients = addedRecipes.flatMap((recipe) =>

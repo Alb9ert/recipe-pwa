@@ -9,10 +9,10 @@ const Home = () => {
   const [search, setSearch] = useState("");
   const [isGrid, setIsGrid] = useState(true);
   const { recipes, loading } = useRecipes();
-  const filteredRecipes = recipes.filter((r) => r.title.toLowerCase().includes(search.toLowerCase()));
+  const filteredRecipes = Array.isArray(recipes) ? recipes.filter((r) => r.title.toLowerCase().includes(search.toLowerCase())) : [];
 
   return (
-    <div className="flex justify-center flex-col">
+    <div className="px-5 flex justify-center flex-col">
       <h1 className="text-2xl font-semibold mb-2 pt-6">Opskrifter</h1>
       <p className="text-gray-600 mb-4">Her kommer listen over alle jeres opskrifter.</p>
 

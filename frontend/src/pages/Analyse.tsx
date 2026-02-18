@@ -3,12 +3,13 @@ import { Star } from "lucide-react";
 
 const Analyse = () => {
   const { recipes } = useRecipes();
+  const safeRecipes = Array.isArray(recipes) ? recipes : [];
 
   // Total recipes count
-  const totalRecipes = recipes.length;
+  const totalRecipes = safeRecipes.length;
 
   // Top rated overall (average of both ratings)
-  const topRatedOverall = recipes
+  const topRatedOverall = safeRecipes
     .filter((r) => r.nikoRating > 0 || r.albertRating > 0)
     .sort((a, b) => {
       const avgA = (a.nikoRating + a.albertRating) / 2;
@@ -18,19 +19,19 @@ const Analyse = () => {
     .slice(0, 3);
 
   // Top 3 by Albert
-  const topAlbert = recipes
+  const topAlbert = safeRecipes
     .filter((r) => r.albertRating > 0)
     .sort((a, b) => b.albertRating - a.albertRating)
     .slice(0, 3);
 
   // Top 3 by Niko
-  const topNiko = recipes
+  const topNiko = safeRecipes
     .filter((r) => r.nikoRating > 0)
     .sort((a, b) => b.nikoRating - a.nikoRating)
     .slice(0, 3);
 
   // Most disagreed (largest difference between ratings)
-  const mostDisagreed = recipes
+  const mostDisagreed = safeRecipes
     .filter((r) => r.nikoRating > 0 && r.albertRating > 0)
     .sort((a, b) => {
       const diffA = Math.abs(a.nikoRating - a.albertRating);
