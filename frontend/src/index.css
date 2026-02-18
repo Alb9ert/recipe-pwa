@@ -6,6 +6,64 @@
 
 body {
   font-family: 'Inter', sans-serif;
+  background-color: #FAF6F0;
+}
+
+col-primary {
+  background-color: #B45A2B;
+  color: #B45A2B;
+}
+
+col-primary-foreground {
+  color: #FAF6F0;
+}
+
+col-background {
+  background-color: #FAF6F0;
+}
+
+col-foreground {
+  color: #3A2D1F;
+}
+
+col-card {
+  background-color: #FFFFFF;
+}
+
+col-secondary {
+  background-color: #F2ECE3;
+}
+
+col-muted {
+  background-color: #EDE7DE;
+}
+
+col-muted-foreground {
+  color: #7A6B5A;
+}
+
+col-accent {
+  background-color: #C28945;
+}
+
+col-border {
+  border-color: #E3DDD4;
+}
+
+col-destructive {
+  background-color: #DC2626;
+}
+
+col-destructive-foreground {
+  color: #FAF6F0;
+}
+
+col-success {
+  background-color: #16A34A;
+}
+
+col-success-foreground {
+  color: #FAF6F0;
 }
 
 

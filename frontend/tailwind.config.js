@@ -7,6 +7,7 @@ export default {
         // Main colors adjustments should also be made in src/index.css for shadcn
         "primary-hover": "hsl(var(--primary-hover))",
         "secondary-hover": "hsl(var(--secondary-hover))",
+        "col-primary": "#B45A2B",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

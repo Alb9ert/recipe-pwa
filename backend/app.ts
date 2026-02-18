@@ -4,7 +4,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 
-import userApi from "./routes/userApi.js";
+import recipeApi from "./routes/recipe.js";
 
 dotenv.config();
 
@@ -21,7 +21,7 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("/api", userApi);
+app.use("/api", recipeApi);
 
 const mongoUri: string | undefined = process.env.MONGO_URI;
 if (!mongoUri) {
